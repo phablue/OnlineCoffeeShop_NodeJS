@@ -14,8 +14,13 @@ app.use(express.Router());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
+  res.sendFile("");
 });
 
 server.listen(8000, function () {
   console.log("Server Running at http://localhost:8000/");
+});
+
+io.sockets.on("connection", function (socket) {
+  // body...
 });
