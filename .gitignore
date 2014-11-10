@@ -1,0 +1,4 @@
+.DS_Store
+public/javascripts
+bower_components
+node_modules

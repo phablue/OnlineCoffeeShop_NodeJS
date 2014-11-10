@@ -1,0 +1,15 @@
+{
+  "name": "Basic-Tool-For-Poject",
+  "version": "0.0.0",
+  "author": "Hana Park",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": ">=0.4.5",
+    "load-grunt-tasks": ">=0.1.0",
+    "grunt-contrib-connect": ">=0.9.0",
+    "grunt-contrib-coffee":  ">=0.10.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
