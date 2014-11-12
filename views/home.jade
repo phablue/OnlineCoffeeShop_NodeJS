@@ -1,0 +1,20 @@
+extends app
+
+block home
+  section#coffee
+    .container
+      ul.list-unstyled
+        for coffee in coffees
+          li
+            .coffee
+              img.img-rounded(src="#{coffee.image}")
+              h2 #{coffee.name}
+              p #{coffee.description}
+              if coffee.stock > 0
+                p.stock Availability : In Stock
+              else
+                p.stock Availability : Out Of Stock
+              h4 $ #{coffee.price}
+                span  / 1 lb
+                button.btn(data-id="addBag") ADD TO BAG
+          hr

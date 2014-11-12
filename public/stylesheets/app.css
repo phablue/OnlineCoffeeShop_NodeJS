@@ -20,9 +20,42 @@ body { font-family: 'Montserrat', sans-serif; }
   letter-spacing: 1.5px;
   padding: 35px 15px 15px 15px;
 }
+.navbar-default .navbar-right li a {
+  font-size: 13px;
+  font-weight: 400;
+}
+.glyphicon { font-size: 17px; }
 
 /* Contents */
 body > .container {
   margin-top: 100px;
-  padding-bottom: 50px;
+  padding-bottom: 50px 0px;
+}
+.list-unstyled li { padding: 20px 0; }
+hr { border-top: 1px solid #796868; }
+.coffee {
+  background-color: white;
+  color: #2C1B13;
+  height: 300px;
+  padding: 5px;
+}
+.coffee .img-rounded {
+  float: left;
+  height: 180px;
+  padding: 10px;
+  margin: 50px 30px;
+  width: 130px;
+}
+.coffee h2 { color: #6E0000;}
+.coffee h4 span {
+  font-size: 12px;
+  padding-right: 120px;
+}
+.coffee .stock {
+  font-size: 14px;
+  padding: 10px 0;
+}
+.coffee .btn {
+  background-color: #6E0000;
+  color: #F0EBEB;
 }

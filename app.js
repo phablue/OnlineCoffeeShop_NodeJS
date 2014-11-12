@@ -1,7 +1,6 @@
 var jade = require("jade");
 var path = require("path");
-var mysql = require("mysql");
-var client = mysql.createConnection({user: "root", password: "root", database: "CoffeeShop"});
+var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
 var express = require("express");
 var app = express();
 var server = require("http").Server(app);
@@ -14,7 +13,10 @@ app.use(express.Router());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
-  res.render("app");
+  sqlClient.query("select * from coffees", function (err, coffees) {
+    if (err) throw err;
+    res.render("home", {coffees: coffees});
+  });
 });
 
 server.listen(8000, function () {
