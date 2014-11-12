@@ -1,0 +1,41 @@
+extends app
+
+block cart
+  .container
+    h1 My Bag
+    table.table
+      tr
+        td
+        td.image(rowspan="2")
+          img.img-rounded(src="sdf")
+        td
+          h3.name
+        td
+        td
+      tr
+        td
+        td
+        td.information
+          span.price Price :
+          |$
+          span.qty Quantity :
+          select
+            option(value=1) 1
+            option(value=2) 2
+            option(value=3) 3
+            option(value=4) 4
+            option(value=5) 5
+          br
+          a.remove Remove
+        td.total
+        td
+      tr
+        td
+        td
+        td
+          b SUBTOTAL
+        td
+          b
+        td
+    .buttons
+      button.btn.check-out CHECKOUT

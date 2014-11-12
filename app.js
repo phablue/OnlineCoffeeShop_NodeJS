@@ -19,6 +19,10 @@ app.get("/", function (req, res) {
   });
 });
 
+app.get("/cart", function (req, res) {
+  res.render("cart");
+});
+
 server.listen(8000, function () {
   console.log("Server Running at http://localhost:8000/");
 });

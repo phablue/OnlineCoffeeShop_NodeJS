@@ -26,7 +26,7 @@ body { font-family: 'Montserrat', sans-serif; }
 }
 .glyphicon { font-size: 17px; }
 
-/* Contents */
+/* Home Page */
 body > .container {
   margin-top: 100px;
   padding-bottom: 50px 0px;
@@ -58,4 +58,56 @@ hr { border-top: 1px solid #796868; }
 .coffee .btn {
   background-color: #6E0000;
   color: #F0EBEB;
+}
+
+/* CART Page*/
+h1 {
+  color: #40000D;
+  margin-bottom: 50px;
+}
+.table tbody tr td {
+  padding: 5px;
+}
+.table > tbody > tr:nth-child(even) > td {
+  border-top: none;
+}
+.image { width: 150px; }
+.img-rounded {
+  height: 150px;
+  padding: 5px;
+  width: 100px;
+}
+.name {
+  color: #5e0000;
+  font-weight: 700;
+}
+.information {
+  float: right;
+}
+.price { padding-right: 15px; }
+.qty {
+  padding-left: 30px;
+  padding-right: 15px;
+}
+select {
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 10px;
+  width: 40px;
+}
+.remove {
+  color: #5e0000;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bolder;
+}
+.remove:hover {
+  color: #909090;
+  text-decoration: none;
+}
+.buttons { float: right; }
+.buttons .btn {
+  background-color: #6E0000;
+  color: #F0EBEB;
+  margin: 20px;
 }
