@@ -10,7 +10,8 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
 app.use(express.Router());
-app.use(express.static(path.join(__dirname, "public")));
+app.use("/public",express.static(path.join(__dirname, "public")));
+app.use("/bower_components",express.static(path.join(__dirname, "bower_components")));
 
 app.get("/", function (req, res) {
   sqlClient.query("select * from coffees", function (err, coffees) {
