@@ -24,10 +24,10 @@ app.get("/cart", function (req, res) {
   res.render("cart");
 });
 
-server.listen(8000, function () {
-  console.log("Server Running at http://localhost:8000/");
+server.listen(3000, function () {
+  console.log("Server Running at http://localhost:3000/");
 });
 
-io.sockets.on("connection", function (socket) {
-  // body...
-});
+// io.sockets.on("connection", function (socket) {
+//   // body...
+// });

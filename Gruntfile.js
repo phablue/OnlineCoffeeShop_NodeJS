@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
   require("load-grunt-tasks")(grunt);
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -8,9 +8,9 @@ module.exports = function(grunt) {
       compileScripts: {
         expand: true,
         flatten: true,
-        cwd: 'public/coffeescripts',
+        cwd: 'public',
         src: '**/*.coffee',
-        dest: 'public/javascripts',
+        dest: 'public/javascripts/scripts',
         ext: '.js'
       },
       compileSpecs: {
@@ -18,7 +18,7 @@ module.exports = function(grunt) {
         flatten: true,
         cwd: 'spec',
         src: '**/*.coffee',
-        dest: 'spec/javascripts',
+        dest: 'public/javascripts/spec',
         ext: '.js'
       }
     },

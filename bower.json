@@ -1,21 +1,11 @@
 {
   "name": "Basic-Tool-For-Poject",
   "version": "0.0.0",
-  "authors": [
-    "Hana Park"
-  ],
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "author": "Hana Park",
   "dependencies": {
     "jquery": "~2.1.0",
-    "jasmine-jquery": "~2.0.0",
-    "underscore": "~1.7.0",
-    "backbone": "~1.1.0"
+    "jasmine-jquery": "~1.5.8",
+    "underscore": "~1.7.0"
   },
   "devDependencies": {}
 }
