@@ -3,7 +3,6 @@
     socket: io.connect(),
 
     setCart: function (addedItem) {
-      console.log(addedItem)
       this.socket.emit("cart", addedItem);
     }
   };

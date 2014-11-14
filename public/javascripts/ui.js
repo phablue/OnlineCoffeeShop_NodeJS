@@ -2,10 +2,10 @@
   var UI = {
     coffeeAddBag: function () {
       $('[data-id="addBag"]').click(function () {
-        SocketClient.setCart($(event.target).data("info"));
+        var addedItem = eval("(" + $(event.target).data("info") + ")");
+        SocketClient.setCart(addedItem);
       });
     }
   };
-
   window.UI = UI
 })();

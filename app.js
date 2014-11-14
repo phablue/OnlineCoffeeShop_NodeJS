@@ -1,5 +1,6 @@
 var jade = require("jade");
 var path = require("path");
+var _ = require("underscore");
 var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
 var express = require("express");
 var app = express();
@@ -23,7 +24,7 @@ app.get("/", function (req, res) {
 app.get("/cart", function (req, res) {
   sqlClient.query("select * from cart", function (err, data) {
     if (err) throw err;
-    res.render("home", {items: data});
+    res.render("cart", {items: data});
   });
 });
 
@@ -32,14 +33,45 @@ server.listen(3000, function () {
 });
 
 io.sockets.on("connection", function (socket) {
+  var cart = [];
   socket.on("cart", function (data) {
     sqlClient.query("update coffees set stock = stock - 1 where name = ?", [data.name],
       function (err) {
         if (err) throw err;
       });
-    sqlClient.query("update cart set count = count + 1 where name = ?", [data.name],
-      function (err) {
-        if (err) throw err;
-      });
+    if (_.contains(cart, data.name)) {
+      sqlClient.query('update cart set item_count = item_count + 1 where item_name = ?',
+        [data.name],
+        function (err) {
+          if (err) throw err;
+          res.redirect('/show/' + req.param('id'));
+        });
+    }
+    else {
+      sqlClient.query("insert into cart set ?",
+        {item_name: data.name, item_image: data.image, item_price: data.price, item_count: 1},
+        function (err) {
+          if (err) throw err;
+        });
+    }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
