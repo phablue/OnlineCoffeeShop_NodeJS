@@ -25,6 +25,7 @@ app.get("/", function (req, res) {
 
 app.get("/cart", function (req, res) {
   res.render("cart", cart);
+  console.log (cart);
 });
 
 server.listen(3000, function () {
@@ -33,6 +34,7 @@ server.listen(3000, function () {
 
 io.sockets.on("connection", function (socket) {
   socket.on("cart", function (data) {
+    console.log(data);
     sqlClient.query("update coffees set stock = stock - 1 where name = ?", [data.name],
       function (err, result) {
         if (err) throw err;
@@ -46,6 +48,5 @@ io.sockets.on("connection", function (socket) {
         index++;
       }
     }
-    io.sockets.emit("reserve", data);
   });
 });
