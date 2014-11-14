@@ -6,6 +6,9 @@ var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
 
+var cart = {};
+var index = 0;
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
@@ -21,7 +24,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/cart", function (req, res) {
-  res.render("cart");
+  res.render("cart", cart);
 });
 
 server.listen(3000, function () {
@@ -29,5 +32,20 @@ server.listen(3000, function () {
 });
 
 io.sockets.on("connection", function (socket) {
-  // body...
+  socket.on("cart", function (data) {
+    sqlClient.query("update coffees set stock = stock - 1 where name = ?", [data.name],
+      function (err, result) {
+        if (err) throw err;
+      });
+    for (item in cart) {
+      if (c.name == data.name) {
+        c.qty++;
+      }
+      else {
+        cart[index] = {name: data.name, image: data.image, price: data.price, qty: 1};
+        index++;
+      }
+    }
+    io.sockets.emit("reserve", data);
+  });
 });
