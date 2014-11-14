@@ -34,11 +34,11 @@ server.listen(3000, function () {
 io.sockets.on("connection", function (socket) {
   socket.on("cart", function (data) {
     sqlClient.query("update coffees set stock = stock - 1 where name = ?", [data.name],
-      function (err, result) {
+      function (err) {
         if (err) throw err;
       });
     sqlClient.query("update cart set count = count + 1 where name = ?", [data.name],
-      function (err, result) {
+      function (err) {
         if (err) throw err;
       });
   });
