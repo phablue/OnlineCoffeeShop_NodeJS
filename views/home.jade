@@ -16,5 +16,6 @@ block home
                 p.stock Availability : Out Of Stock
               h4 $ #{coffee.price}
                 span  / 1 lb
-                button.btn(data-id="addBag") ADD TO BAG
+                - var info = {name: coffee.name, image: coffee.image, price: coffee.price}
+                button.btn(data-id="addBag", data-info="#{info}") ADD TO BAG
           hr
