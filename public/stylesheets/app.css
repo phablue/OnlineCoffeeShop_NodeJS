@@ -105,6 +105,14 @@ h1 {
   color: #909090;
   text-decoration: none;
 }
+.subtotal {
+  color: #6E0000;
+  font-size: 17px;
+  position: relative;
+  left: 900px;
+  top: 5px;
+}
+.subtotal span { padding-left: 50px; }
 .buttons { float: right; }
 .buttons .btn {
   background-color: #6E0000;

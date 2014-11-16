@@ -4,6 +4,7 @@ block cart
   .container
     h1 My Bag
     table.table
+      - var total = 0
       for item in items
         tr
           td
@@ -16,6 +17,7 @@ block cart
         tr
           td
           td
+          form(method="post")
           td.information
             span.price Price :
             b $ #{item.item_price}
@@ -23,16 +25,15 @@ block cart
             input(value="#{item.item_count}")
             br
             a.remove Remove
-          td.total
-          td
-      if items.length != 0
-        tr
           td
           td
-          td
-            b SUBTOTAL
-          td
-            b
-          td
+        - total += item.item_price * item.item_count
+    hr
+    if items.length != 0
+      .subtotal
+        p
+          b SUBTOTAL :
+          span
+            b $ #{total}
     .buttons
       button.btn.check-out CHECKOUT
