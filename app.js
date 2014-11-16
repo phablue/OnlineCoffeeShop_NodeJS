@@ -6,6 +6,7 @@ var express = require("express");
 var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
+var cart = require("./cart.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
@@ -33,45 +34,8 @@ server.listen(3000, function () {
 });
 
 io.sockets.on("connection", function (socket) {
-  var cart = [];
-  socket.on("cart", function (data) {
-    sqlClient.query("update coffees set stock = stock - 1 where name = ?", [data.name],
-      function (err) {
-        if (err) throw err;
-      });
-    if (_.contains(cart, data.name)) {
-      sqlClient.query('update cart set item_count = item_count + 1 where item_name = ?',
-        [data.name],
-        function (err) {
-          if (err) throw err;
-          res.redirect('/show/' + req.param('id'));
-        });
-    }
-    else {
-      sqlClient.query("insert into cart set ?",
-        {item_name: data.name, item_image: data.image, item_price: data.price, item_count: 1},
-        function (err) {
-          if (err) throw err;
-        });
-    }
-  });
+  cart.addItem(socket);
+  var timerID = setTimeout(function () {
+    cart.empty(timerID);
+  }, 1000 * 60 * 60 * 3);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
