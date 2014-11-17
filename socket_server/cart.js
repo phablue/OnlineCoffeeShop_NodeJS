@@ -7,31 +7,8 @@ var Cart = (function () {
 
   Cart.addItem = function (socket) {
     socket.on("cart", function (data) {
-      Cart.updateStock(1, data);
+      Cart.updateCoffeeStock(1, data);
       Cart.update(data);
-    });
-  };
-
-  Cart.updateStock = function (count, data) {
-    sqlClient.query("update coffees set stock = stock - ? where name = ?", [count, data.name],
-      function (err) {
-        if (err) throw err;
-      });
-  };
-
-  Cart.returnStock = function (def) {
-    sqlClient.query("select item_name, item_count from cart", function (err, data) {
-      if (err) throw err;
-      _.each(data, function (item) {
-        Cart.updateStock(item.item_count, item.item_name);
-      });
-    });
-  };
-
-  Cart.currentCart = function (def) {
-    sqlClient.query("select item_name from cart", function (err, data) {
-      if (err) throw err;
-      return def.resolve(_.map(data, function(d){ return d.item_name }));
     });
   };
 
@@ -51,12 +28,28 @@ var Cart = (function () {
   Cart.empty = function (timerID) {
     clearTimeout(timerID);
     var def = $.Deferred();
-    this.returnStock(def);
+    this.returnCoffeeStock(def);
     def.done(function () {
       sqlClient.query("delete from cart", function (err) {
         if (err) throw err;
       });
     });
+  };
+
+  Cart.returnCoffeeStock = function (def) {
+    sqlClient.query("select item_name, item_count from cart", function (err, data) {
+      if (err) throw err;
+      _.each(data, function (item) {
+        Cart.updateCoffeeStock(-item.item_count, item.item_name);
+      });
+    });
+  };
+
+  Cart.updateCoffeeStock = function (count, data) {
+    sqlClient.query("update coffees set stock = stock - ? where name = ?", [count, data.name],
+      function (err) {
+        if (err) throw err;
+      });
   };
 
   Cart.createNewItem = function (data) {
@@ -73,8 +66,14 @@ var Cart = (function () {
       function (err) {
         if (err) throw err;
       });
-  }
+  };
 
+  Cart.currentCart = function (def) {
+    sqlClient.query("select item_name from cart", function (err, data) {
+      if (err) throw err;
+      return def.resolve(_.map(data, function(d){ return d.item_name }));
+    });
+  };
   return Cart;
 })();
 

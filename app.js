@@ -1,6 +1,5 @@
 var jade = require("jade");
 var path = require("path");
-var _ = require("underscore");
 var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
 var express = require("express");
 var app = express();
@@ -27,6 +26,15 @@ app.get("/cart", function (req, res) {
     if (err) throw err;
     res.render("cart", {items: data});
   });
+});
+
+app.get("/cart/:name", function (req, res) {
+  sqlClient.query("delete from cart where item_name = ?", [req.param("name")],
+    function (err) {
+      if (err) throw err;
+      cart.updateCoffeeStock(-req.query.qty, {name:req.param("name")});
+      res.redirect("/cart");
+    });
 });
 
 server.listen(3000, function () {

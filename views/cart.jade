@@ -24,7 +24,7 @@ block cart
             span.qty Quantity :
             input(value="#{item.item_count}")
             br
-            a.remove Remove
+            a.remove(href="/cart/#{item.item_name}?qty=#{item.item_count}") Remove
           td
           td
         - total += item.item_price * item.item_count
