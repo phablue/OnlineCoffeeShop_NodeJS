@@ -5,7 +5,7 @@ var express = require("express");
 var app = express();
 var server = require("http").Server(app);
 var io = require("socket.io")(server);
-var cart = require("./socket_server/cart.js");
+var cart = require("./custom_modules/cart.js");
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");

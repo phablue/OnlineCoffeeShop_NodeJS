@@ -17,7 +17,7 @@ var Cart = (function () {
     this.currentCart(def);
     def.done(function (cart) {
       if (_.contains(cart, data.name)) {
-        Cart.updateExistingItem(data);
+        Cart.updateExistingItem("item_count + 1", data);
       }
       else {
         Cart.createNewItem(data);
@@ -60,9 +60,9 @@ var Cart = (function () {
       });
   };
 
-  Cart.updateExistingItem = function (data) {
-    sqlClient.query('update cart set item_count = item_count + 1 where item_name = ?',
-      [data.name],
+  Cart.updateExistingItem = function (count, data) {
+    sqlClient.query('update cart set item_count = ? where item_name = ?',
+      [count, data.name],
       function (err) {
         if (err) throw err;
       });

@@ -17,13 +17,12 @@ block cart
         tr
           td
           td
-          form(method="post")
           td.information
             span.price Price :
             b $ #{item.item_price}
             span.qty Quantity :
-            input(value="#{item.item_count}")
-            br
+            form
+              input(value="#{item.item_count}")
             a.remove(href="/cart/#{item.item_name}?qty=#{item.item_count}") Remove
           td
           td
