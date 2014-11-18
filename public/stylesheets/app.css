@@ -81,19 +81,25 @@ h1 {
   color: #5e0000;
   font-weight: 700;
 }
-.information {
-  float: right;
-}
+.information { float: right; }
 .price { padding-right: 15px; }
 .qty {
   padding-left: 30px;
   padding-right: 15px;
 }
+.information form { display: inline-block; }
 .information input {
   border-radius: 4px;
   padding: 0 5px;
   text-align: center;
   width: 55px;
+}
+.update {
+  cursor: pointer;
+  font-size: 9px;
+  font-weight: bolder;
+  margin-left: 10px;
+  padding: 2px 4px;
 }
 .remove {
   color: #5e0000;

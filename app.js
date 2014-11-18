@@ -1,5 +1,6 @@
 var jade = require("jade");
 var path = require("path");
+var bodyParser = require('body-parser');
 var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
 var express = require("express");
 var app = express();
@@ -11,6 +12,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "jade");
 
 app.use(express.Router());
+app.use(bodyParser());
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/bower_components", express.static(path.join(__dirname, "bower_components")));
 
@@ -28,7 +30,14 @@ app.get("/cart", function (req, res) {
   });
 });
 
-app.get("/cart/:name", function (req, res) {
+app.post("/cart/update/:name", function (req, res) {
+  var difference = parseInt(req.body.count) - parseInt(req.body.origin);
+  cart.updateExistingItem(req.body.count, {name:req.param("name")});
+  cart.updateCoffeeStock(difference, {name:req.param("name")});
+  res.redirect("/cart");
+});
+
+app.get("/cart/delete/:name", function (req, res) {
   sqlClient.query("delete from cart where item_name = ?", [req.param("name")],
     function (err) {
       if (err) throw err;

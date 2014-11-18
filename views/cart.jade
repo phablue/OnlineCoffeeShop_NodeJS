@@ -16,15 +16,14 @@ block cart
           td
         tr
           td
-          td
-          td.information
+          td.information(colspan="3")
             span.price Price :
             b $ #{item.item_price}
             span.qty Quantity :
-            form
-              input(value="#{item.item_count}")
-            a.remove(href="/cart/#{item.item_name}?qty=#{item.item_count}") Remove
-          td
+            input(value="#{item.item_count}", data-qty="#{item.item_count}")
+            button.btn.update(type="submit", data-id="update", data-name="#{item.item_name}") UPDATE
+            br
+            a.remove(href="/cart/delete/#{item.item_name}?qty=#{item.item_count}") Remove
           td
         - total += item.item_price * item.item_count
     hr
