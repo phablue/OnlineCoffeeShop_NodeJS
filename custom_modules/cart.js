@@ -12,6 +12,15 @@ var Cart = (function () {
     });
   };
 
+  Cart.purchase = function (socket, timerID) {
+    socket.on("buy", function () {
+      clearTimeout(timerID);
+      sqlClient.query("delete from cart", function (err) {
+        if (err) throw err;
+      });
+    });
+  };
+
   Cart.update = function (data) {
     var def = $.Deferred();
     this.currentCart(def);

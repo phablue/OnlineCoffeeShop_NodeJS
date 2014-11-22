@@ -34,6 +34,6 @@ block cart
           span
             b $ #{total.toPrecision(4)}
       .buttons
-        button.btn.check-out CHECKOUT
+        button.btn.check-out(data-id="purchase") CHECKOUT
     else
       h4.emptyMSG Your Bag is empty.

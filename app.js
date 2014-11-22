@@ -31,4 +31,5 @@ io.sockets.on("connection", function (socket) {
   var timerID = setTimeout(function () {
     cartSocket.empty(timerID);
   }, 1000 * 60 * 60 * 3);
+  cartSocket.purchase(socket, timerID);
 });

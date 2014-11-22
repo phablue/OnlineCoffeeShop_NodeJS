@@ -1,4 +1,3 @@
 $(function(){
-  UI.coffeeAddBag();
-  UI.changeItemQtyInCart();
+  UI.cartActive();
 });

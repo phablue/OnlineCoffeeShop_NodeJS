@@ -2,6 +2,12 @@
   var UI = {
     url: "http://localhost:3000/cart/",
 
+    cartActive: function () {
+      this.coffeeAddBag();
+      this.changeItemQtyInCart();
+      this.purchase();
+    },
+
     coffeeAddBag: function () {
       $('[data-id="addBag"]').click(function () {
         var addedItem = eval("(" + $(event.target).data("info") + ")");
@@ -16,7 +22,16 @@
             origin : $(e.target).siblings("input").data("qty")});
         e.preventDefault();
       });
+    },
+
+    purchase: function () {
+      $('[data-id="purchase"]').click(function (e) {
+        SocketClient.setCoffee();
+        window.location.replace("/")
+        e.preventDefault();
+      });
     }
   };
+
   window.UI = UI
 })();

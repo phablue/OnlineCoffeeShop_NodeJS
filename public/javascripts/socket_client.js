@@ -4,6 +4,10 @@
 
     setCart: function (addedItem) {
       this.socket.emit("cart", addedItem);
+    },
+
+    setCoffee: function () {
+      this.socket.emit("buy");
     }
   };
 
