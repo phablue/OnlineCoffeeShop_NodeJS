@@ -23,15 +23,17 @@ block cart
             input(value="#{item.item_count}", data-qty="#{item.item_count}")
             button.btn.update(type="submit", data-id="update", data-name="#{item.item_name}") UPDATE
             br
-            a.remove(href="/cart/delete/#{item.item_name}?qty=#{item.item_count}") Remove
+            a.remove(href="/cart/#{item.item_name}/delete?qty=#{item.item_count}") Remove
           td
         - total += item.item_price * item.item_count
-    hr
     if items.length != 0
+      hr
       .subtotal
         p
           b SUBTOTAL :
           span
-            b $ #{total}
-    .buttons
-      button.btn.check-out CHECKOUT
+            b $ #{total.toPrecision(4)}
+      .buttons
+        button.btn.check-out CHECKOUT
+    else
+      h4.emptyMSG Your Bag is empty.

@@ -7,7 +7,6 @@ var Cart = (function () {
 
   Cart.addItem = function (socket) {
     socket.on("cart", function (data) {
-      Cart.updateCoffeeStock(1, data);
       Cart.update(data);
     });
   };
@@ -16,12 +15,13 @@ var Cart = (function () {
     var def = $.Deferred();
     this.currentCart(def);
     def.done(function (cart) {
-      if (_.contains(cart, data.name)) {
-        Cart.updateExistingItem("item_count + 1", data);
+      if (_.contains(_.keys(cart), data.name)) {
+        Cart.updateExistingItem(cart[data.name]+1, data);
       }
       else {
         Cart.createNewItem(data);
       }
+      Cart.updateCoffeeStock(1, data);
     });
   };
 
@@ -61,7 +61,7 @@ var Cart = (function () {
   };
 
   Cart.updateExistingItem = function (count, data) {
-    sqlClient.query('update cart set item_count = ? where item_name = ?',
+    sqlClient.query("update cart set item_count = ? where item_name = ?",
       [count, data.name],
       function (err) {
         if (err) throw err;
@@ -69,9 +69,11 @@ var Cart = (function () {
   };
 
   Cart.currentCart = function (def) {
-    sqlClient.query("select item_name from cart", function (err, data) {
+    sqlClient.query("select item_name, item_count from cart", function (err, data) {
+      var cart = {}
       if (err) throw err;
-      return def.resolve(_.map(data, function(d){ return d.item_name }));
+      _.map(data, function(d){ return cart[d.item_name] = d.item_count; })
+      def.resolve(cart);
     });
   };
   return Cart;

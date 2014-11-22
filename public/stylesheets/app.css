@@ -125,3 +125,9 @@ h1 {
   color: #F0EBEB;
   margin: 20px;
 }
+.emptyMSG {
+  background-color: #F0EBEB;
+  color: #6E0000;
+  font-weight: 700;
+  padding: 10px;
+}
