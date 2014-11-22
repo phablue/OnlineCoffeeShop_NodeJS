@@ -1,6 +1,7 @@
 var _ = require("underscore");
 var $ = require("jquery-deferred");
 var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
+var coffee = require("../custom_modules/coffee.js");
 
 var Cart = (function () {
   function Cart () {}
@@ -21,35 +22,19 @@ var Cart = (function () {
       else {
         Cart.createNewItem(data);
       }
-      Cart.updateCoffeeStock(1, data);
+      coffee.updateStock(1, data);
     });
   };
 
   Cart.empty = function (timerID) {
     clearTimeout(timerID);
     var def = $.Deferred();
-    this.returnCoffeeStock(def);
+    coffee.returnStock(def);
     def.done(function () {
       sqlClient.query("delete from cart", function (err) {
         if (err) throw err;
       });
     });
-  };
-
-  Cart.returnCoffeeStock = function (def) {
-    sqlClient.query("select item_name, item_count from cart", function (err, data) {
-      if (err) throw err;
-      _.each(data, function (item) {
-        Cart.updateCoffeeStock(-item.item_count, item.item_name);
-      });
-    });
-  };
-
-  Cart.updateCoffeeStock = function (count, data) {
-    sqlClient.query("update coffees set stock = stock - ? where name = ?", [count, data.name],
-      function (err) {
-        if (err) throw err;
-      });
   };
 
   Cart.createNewItem = function (data) {
@@ -76,6 +61,7 @@ var Cart = (function () {
       def.resolve(cart);
     });
   };
+
   return Cart;
 })();
 
