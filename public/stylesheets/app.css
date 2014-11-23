@@ -24,6 +24,23 @@ body { font-family: 'Montserrat', sans-serif; }
   font-size: 13px;
   font-weight: 400;
 }
+.account {
+  display: inline-block;
+  position: relative;
+  top: 27px;
+}
+.account input {
+  border-radius: 4px;
+  margin-right: 10px;
+  padding: 3px 7px;
+}
+.account .btn {
+  background-color: #630000;
+  color: #ECECEC;;
+  margin-left: -5px;
+  margin-right: 20px;
+  padding: 5px;
+}
 .glyphicon { font-size: 17px; }
 
 /* Home Page */
