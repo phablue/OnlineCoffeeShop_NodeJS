@@ -9,7 +9,7 @@ block home
             .coffee
               img.img-rounded(src="#{coffee.image}")
               h2 #{coffee.name}
-              p #{coffee.description}
+              p.description #{coffee.description}
               if coffee.stock > 0
                 p.stock Availability : In Stock
               else

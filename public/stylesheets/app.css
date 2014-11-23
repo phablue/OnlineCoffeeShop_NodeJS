@@ -59,6 +59,21 @@ hr { border-top: 1px solid #796868; }
   background-color: #6E0000;
   color: #F0EBEB;
 }
+@media (max-width: 610px) {
+  .coffee .img-rounded {
+    height: 150px;
+    width: 100px;
+  }
+  .coffee .description {
+    display: none;
+  }
+  .coffee h2 { font-size: 20px; }
+  .coffee h4 span { padding-right: 50px; }
+  .coffee .btn {
+    font-size: 12px;
+    padding: 5px;
+  }
+}
 
 /* CART Page*/
 h1 {
