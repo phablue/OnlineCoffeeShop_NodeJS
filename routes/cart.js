@@ -5,7 +5,7 @@ var coffee = require("../custom_modules/coffee.js");
 exports.index = function(req, res){
   sqlClient.query("select * from cart", function (err, data) {
     if (err) throw err;
-    res.render("cart", {items: data});
+    res.render("cart/index", {items: data});
   });
 };
 

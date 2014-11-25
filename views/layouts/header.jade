@@ -12,9 +12,11 @@
       ul.nav.navbar-nav.navbar-right
         li
           form.account
-            input(type="text" placeholder="EMAIL")
+            input(type="email" placeholder="EMAIL")
             input(type="password" placeholder="Password")
             button.btn(type="submit") Sign in
+          p.new-accout New customer?
+            a(href="/users/new") Start Here
         li
           a(href="/cart")
             span.glyphicon.glyphicon-shopping-cart

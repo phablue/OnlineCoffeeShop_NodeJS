@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Small Online Market
+    link(rel="stylesheet", href="/bower_components/bootstrap/dist/css/bootstrap.css")
+    link(rel="stylesheet", href="/public/stylesheets/app.css")
+    script(src="/bower_components/jquery/dist/jquery.js")
+    script(src="/bower_components/underscore/underscore.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/public/javascripts/socket_client.js")
+    script(src="/public/javascripts/ui.js")
+    script(src="/public/javascripts/app.js")
+  body
+    include header
+    .container
+      block home
+      block cart
+      block users
