@@ -1,17 +1,28 @@
-h1 Sign Up
-  br
-  span It’s free and always will be.
-
 .container
   form.form-horizontal(method="post")
     .form-group
       label.col-sm-2.control-label EMAIL
       .col-sm-10
-        input.form-control(type="email", name="email", placeholder="EMAIL")
+        input.form-control(type="email", name="email", placeholder="EMAIL", value="#{user[0].EMail}")
     .form-group
       label.col-sm-2.control-label PASSWORD
       .col-sm-10
         input.form-control(type="password", name="password", placeholder="PASSWORD")
     .form-group
+      label.col-sm-2.control-label NAME
+      .col-sm-5
+        input.form-control(type="text", name="fname", placeholder="FirstName", value="#{user[0].FirstName}")
+      .col-sm-5
+        input.form-control(type="text", name="lname", placeholder="LastName", value="#{user[0].LastName}")
+    .form-group
+      label.col-sm-2.control-label Address
+      .col-sm-10.address
+        input.form-control(type="text", name="address", placeholder="Address", value="#{user[0].Address}")
+      label.col-sm-2.control-label
+      .col-sm-4
+        input.form-control(type="text", name="city", placeholder="City", value="#{user[0].City}")
+      .col-sm-3
+        input.form-control(type="text", name="zipcode", placeholder="ZipCode", value="#{user[0].ZipCode}")
+    .form-group
       .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type="submit") SUBMIT
+        button.btn(type="submit") SUBMIT

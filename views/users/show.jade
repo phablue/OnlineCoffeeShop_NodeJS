@@ -2,5 +2,24 @@ extends users
 
 block show
   h1 PROFILE
-  h3 EMAIL :
-    span #{user[0].EMail}
+  .container
+  .form-horizontal
+    .form-group
+      label.col-sm-2.control-label EMAIL
+      .col-sm-10
+        .form-control #{user[0].EMail}
+    .form-group
+      label.col-sm-2.control-label NAME
+      .col-sm-5
+        .form-control #{user[0].FirstName}
+      .col-sm-5
+        .form-control #{user[0].LastName}
+    .form-group
+      label.col-sm-2.control-label Address
+      .col-sm-10.address
+        .form-control #{user[0].Address}
+      label.col-sm-2.control-label
+      .col-sm-4
+        .form-control #{user[0].City}
+      .col-sm-3
+        .form-control #{user[0].ZipCode}

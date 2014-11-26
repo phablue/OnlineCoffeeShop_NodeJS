@@ -5,9 +5,10 @@ h1 {
   color: #40000D;
   margin-bottom: 50px;
 }
-h3 span {
-  font-size: 20px;
-  padding-left: 50px;
+h1 span { font-size: 20px; }
+h4 span {
+  font-size: 18px;
+  padding: 10px;
 }
 /* Header */
 .navbar-default {
@@ -188,7 +189,8 @@ hr { border-top: 1px solid #796868; }
 
 /* USERS Page*/
 .form-horizontal {
-  width: 650px;
+  width: 750px;
   padding-right: 15px;
 }
 .form-horizontal .control-label { text-align: left; }
+.address { margin-bottom: 7px;}

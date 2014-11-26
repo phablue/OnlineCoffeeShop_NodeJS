@@ -8,11 +8,19 @@ var encrypt = function (password) {
 };
 
 exports.new = function(req, res){
-  res.render("users/new");
+  var emptyData = [{ EMail: "", LastName: "", FirstName: "", Address: "", City: "", ZipCode: ""}]
+  res.render("users/new", {user: emptyData});
 };
 
 exports.create = function(req, res){
-  sqlClient.query("insert into users set ?", {EMail: req.body.email, PassWord: encrypt(req.body.password)},
+  sqlClient.query("insert into users set ?",
+    { EMail: req.body.email,
+      PassWord: encrypt(req.body.password),
+      LastName: req.body.lname,
+      FirstName:req.body.fname,
+      Address: req.body.address,
+      City: req.body.city,
+      ZipCode: req.body.zipcode },
     function (err, result) {
       if (err) throw err;
       res.redirect("/users/" + result.insertId);
@@ -28,12 +36,22 @@ exports.show = function(req, res){
 };
 
 exports.edit = function(req, res){
-  res.render("users/edit");
+  sqlClient.query("select * from users where P_ID = ?", [req.param("id")],
+    function (err, result) {
+      if (err) throw err;
+      res.render("users/edit", {user: result});
+    });
 };
 
 exports.update = function(req, res){
   sqlClient.query("update users set ? where P_ID = ?",
-    [{EMail: req.body.email, PassWord: encrypt(req.body.password)}, req.param("id")],
+    [ { EMail: req.body.email,
+        PassWord: encrypt(req.body.password),
+        LastName: req.body.lname,
+        FirstName:req.body.fname,
+        Address: req.body.address,
+        City: req.body.city,
+        ZipCode: req.body.zipcode }, req.param("id")],
     function (err) {
       if (err) throw err;
       res.redirect("/users/" + req.param("id"));
