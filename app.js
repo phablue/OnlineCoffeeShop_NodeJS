@@ -24,11 +24,11 @@ app.post("/cart/:name/update", cart.update);
 app.get("/cart/:name/delete", cart.delete);
 
 app.get("/users/new", user.new);
-app.post("/user/new", user.create);
+app.post("/users/new", user.create);
 app.get("/users/:id", user.show);
 app.get("/users/:id/edit", user.edit);
-app.post("/user/:id/edit", user.update);
-app.get("/cart/:id/delete", user.delete);
+app.post("/users/:id/edit", user.update);
+app.get("/users/:id/delete", user.delete);
 
 server.listen(3000, function () {
   console.log("Server Running at http://localhost:3000/");

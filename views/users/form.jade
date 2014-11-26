@@ -3,15 +3,15 @@ h1 Sign Up
   span It’s free and always will be.
 
 .container
-  form.form-horizontal(role="form", method="post")
+  form.form-horizontal(method="post")
     .form-group
-      label.col-sm-2.control-label(for="inputEmail3") EMAIL
+      label.col-sm-2.control-label EMAIL
       .col-sm-10
-        input#inputEmail3.form-control(type="email", placeholder="EMAIL")
+        input.form-control(type="email", name="email", placeholder="EMAIL")
     .form-group
-      label.col-sm-2.control-label(for="inputPassword3") PASSWORD
+      label.col-sm-2.control-label PASSWORD
       .col-sm-10
-        input#inputPassword3.form-control(type="password", placeholder="PASSWORD")
+        input.form-control(type="password", name="password", placeholder="PASSWORD")
     .form-group
       .col-sm-offset-2.col-sm-10
         button.btn.btn-default(type="submit") CREATE

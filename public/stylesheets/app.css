@@ -1,7 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Limelight|Montserrat:400,700);
 
 body { font-family: 'Montserrat', sans-serif; }
-
+h1 {
+  color: #40000D;
+  margin-bottom: 50px;
+}
+h1 span {
+  font-size: 18px;
+}
 /* Header */
 .navbar-default {
   background-color: #A80000;
@@ -54,10 +60,11 @@ body { font-family: 'Montserrat', sans-serif; }
 }
 .account .btn {
   background-color: #630000;
-  color: #ECECEC;;
+  color: #ECECEC;
+  font-size: 12px;
   margin-left: -5px;
   margin-right: 20px;
-  padding: 4px;
+  padding: 4px 8px;
 }
 .glyphicon { font-size: 17px; }
 
@@ -111,10 +118,6 @@ hr { border-top: 1px solid #796868; }
 }
 
 /* CART Page*/
-h1 {
-  color: #40000D;
-  margin-bottom: 50px;
-}
 .table tbody tr td {
   padding: 5px;
 }
@@ -181,3 +184,10 @@ h1 {
   font-weight: 700;
   padding: 10px;
 }
+
+/* USERS Page*/
+.form-horizontal {
+  width: 650px;
+  padding-right: 15px;
+}
+.form-horizontal .control-label { text-align: left; }
