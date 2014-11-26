@@ -66,7 +66,7 @@ var Cart = (function () {
     sqlClient.query("select item_name, item_count from cart", function (err, data) {
       var cart = {}
       if (err) throw err;
-      _.map(data, function(d){ return cart[d.item_name] = d.item_count; })
+      _.map(data, function(d){ return cart[d.item_name] = d.item_count; });
       def.resolve(cart);
     });
   };
