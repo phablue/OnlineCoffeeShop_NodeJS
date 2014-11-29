@@ -3,6 +3,24 @@ var sqlClient = require("mysql").createConnection({user: "root", password: "root
 
 var messages = "";
 
+exports.new = function (req, res) {
+  res.render("sessions/new", {messages: messages});
+};
+
+exports.create = function (req, res) {
+  sqlClient.query("select PassWord, FirstName from users where EMail = ?", [req.body.email],
+  function (err, result) {
+    if (err) throw err;
+    authenticate(req, res, result);
+  });
+};
+
+exports.delete = function (req, res) {
+  req.session.userEmail = null;
+  req.session.userName = null;
+  res.redirect("/");
+};
+
 var authenticate = function (req, res, result) {
   if (result == null) {
     messages = "Sorry, This Email Does Not Exist. Please Try Again.";
@@ -22,24 +40,6 @@ var authenticate = function (req, res, result) {
 
 var wrongPassword = function (password, input) {
   return password != encrypt(input);
-};
-
-exports.new = function (req, res) {
-  res.render("sessions/new", {messages: messages});
-};
-
-exports.create = function (req, res) {
-  sqlClient.query("select PassWord, FirstName from users where EMail = ?", [req.body.email],
-  function (err, result) {
-    if (err) throw err;
-    authenticate(req, res, result);
-  });
-};
-
-exports.delete = function (req, res) {
-  req.session.userEmail = null;
-  req.session.userName = null;
-  res.redirect("/");
 };
 
 var encrypt = function (password) {
