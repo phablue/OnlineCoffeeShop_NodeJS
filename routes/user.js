@@ -1,7 +1,7 @@
 var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
-var crypto = require("crypto");
 var _ = require("underscore");
 var $ = require("jquery-deferred");
+var crypto = require("../helper/crypto");
 
 var messages = "";
 
@@ -14,25 +14,7 @@ exports.create = function(req, res){
   var def = $.Deferred();
   existingUsers(def)
   def.done(function (users) {
-    if (_.contains(users, req.body.email)) {
-      messages = "Sorry, This Email Already Exist."
-      res.redirect("/users/new");
-    }
-    else {
-      messages = "";
-      sqlClient.query("insert into users set ?",
-        { EMail: req.body.email,
-          PassWord: encrypt(req.body.password),
-          LastName: req.body.lname,
-          FirstName:req.body.fname,
-          Address: req.body.address,
-          City: req.body.city,
-          ZipCode: req.body.zipcode },
-        function (err, result) {
-          if (err) throw err;
-          res.redirect("/users/" + result.insertId);
-        });
-    }
+    checkInvalid(users, req, res);
   });
 };
 
@@ -53,14 +35,7 @@ exports.edit = function(req, res){
 };
 
 exports.update = function(req, res){
-  sqlClient.query("update users set ? where P_ID = ?",
-    [ { EMail: req.body.email,
-        PassWord: encrypt(req.body.password),
-        LastName: req.body.lname,
-        FirstName:req.body.fname,
-        Address: req.body.address,
-        City: req.body.city,
-        ZipCode: req.body.zipcode }, req.param("id")],
+  sqlClient.query("update users set ? where P_ID = ?", [ setUser(req), req.param("id")],
     function (err) {
       if (err) throw err;
       res.redirect("/users/" + req.param("id"));
@@ -75,10 +50,39 @@ exports.delete = function(req, res){
     });
 };
 
-var encrypt = function (password) {
-  var shasum = crypto.createHash("sha1")
-  shasum.update(password);
-  return shasum.digest("base64");
+var checkInvalid = function (users, req, res) {
+  if (_.contains(users, req.body.email)) {
+    unavailableEmail(res);
+  }
+  else {
+    messages = "";
+    createUser(req, res)
+  }
+};
+
+var createUser = function (req, res) {
+  sqlClient.query("insert into users set ?", setUser(req),
+    function (err, result) {
+      if (err) throw err;
+      req.session.userEmail = req.body.email;
+      req.session.userName = req.body.fname;
+      res.redirect("/users/" + result.insertId);
+    });
+};
+
+var unavailableEmail = function (res) {
+  messages = "Sorry, This Email Already Exist."
+  res.redirect("/users/new");
+};
+
+var setUser = function (req) {
+  return { EMail: req.body.email,
+           PassWord: crypto.encrypt(req.body.password),
+           LastName: req.body.lname,
+           FirstName:req.body.fname,
+           Address: req.body.address,
+           City: req.body.city,
+           ZipCode: req.body.zipcode };
 };
 
 var existingUsers = function (def) {
