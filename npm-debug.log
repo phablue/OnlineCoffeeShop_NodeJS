@@ -1,0 +1,126 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 warn package.json OnlineCoffeeShop@1.0.0 No description
+5 warn package.json OnlineCoffeeShop@1.0.0 No repository field.
+6 warn package.json OnlineCoffeeShop@1.0.0 No README data
+7 verbose readDependencies using package.json deps
+8 verbose install where, deps [ '/Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop',
+8 verbose install   [ 'jade',
+8 verbose install     'jquery-deferred',
+8 verbose install     'body-parser',
+8 verbose install     'underscore',
+8 verbose install     'path',
+8 verbose install     'mysql',
+8 verbose install     'express',
+8 verbose install     'http',
+8 verbose install     'socket.io',
+8 verbose install     'express-session',
+8 verbose install     'cookieParser' ] ]
+9 info preinstall OnlineCoffeeShop@1.0.0
+10 warn package.json http@0.0.0 http is also the name of a node core module.
+11 warn package.json http@0.0.0 No description
+12 warn package.json http@0.0.0 No repository field.
+13 warn package.json path@0.4.9 path is also the name of a node core module.
+14 verbose readDependencies using package.json deps
+15 verbose already installed skipping body-parser@~1.9.3 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+16 verbose already installed skipping underscore@~1.7.0 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+17 verbose already installed skipping path@~0.4.9 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+18 verbose already installed skipping mysql@~2.5.3 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+19 verbose already installed skipping express@~4.9.0 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+20 verbose already installed skipping http@~0.0.0 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+21 verbose already installed skipping socket.io@~1.2.0 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+22 verbose already installed skipping express-session@~1.9.2 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+23 verbose cache add [ 'cookieParser@~1.3.3', null ]
+24 verbose cache add name=undefined spec="cookieParser@~1.3.3" args=["cookieParser@~1.3.3",null]
+25 verbose parsed url { protocol: null,
+25 verbose parsed url   slashes: null,
+25 verbose parsed url   auth: null,
+25 verbose parsed url   host: null,
+25 verbose parsed url   port: null,
+25 verbose parsed url   hostname: null,
+25 verbose parsed url   hash: null,
+25 verbose parsed url   search: null,
+25 verbose parsed url   query: null,
+25 verbose parsed url   pathname: 'cookieParser@~1.3.3',
+25 verbose parsed url   path: 'cookieParser@~1.3.3',
+25 verbose parsed url   href: 'cookieParser@~1.3.3' }
+26 verbose already installed skipping jade@~1.6.0 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+27 verbose cache add name="cookieParser" spec="~1.3.3" args=["cookieParser","~1.3.3"]
+28 verbose parsed url { protocol: null,
+28 verbose parsed url   slashes: null,
+28 verbose parsed url   auth: null,
+28 verbose parsed url   host: null,
+28 verbose parsed url   port: null,
+28 verbose parsed url   hostname: null,
+28 verbose parsed url   hash: null,
+28 verbose parsed url   search: null,
+28 verbose parsed url   query: null,
+28 verbose parsed url   pathname: '~1.3.3',
+28 verbose parsed url   path: '~1.3.3',
+28 verbose parsed url   href: '~1.3.3' }
+29 verbose addNamed [ 'cookieParser', '~1.3.3' ]
+30 verbose addNamed [ null, '>=1.3.3-0 <1.4.0-0' ]
+31 verbose already installed skipping jquery-deferred@~0.3.0 /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+32 silly lockFile 00ff8f6d-cookieParser-1-3-3 cookieParser@~1.3.3
+33 verbose lock cookieParser@~1.3.3 /Users/hyunahkelly/.npm/00ff8f6d-cookieParser-1-3-3.lock
+34 silly addNameRange { name: 'cookieParser',
+34 silly addNameRange   range: '>=1.3.3-0 <1.4.0-0',
+34 silly addNameRange   hasData: false }
+35 verbose request where is /cookieParser
+36 verbose request registry https://registry.npmjs.org/
+37 verbose request id a1f35b15c5278b48
+38 verbose url raw /cookieParser
+39 verbose url resolving [ 'https://registry.npmjs.org/', './cookieParser' ]
+40 verbose url resolved https://registry.npmjs.org/cookieParser
+41 verbose request where is https://registry.npmjs.org/cookieParser
+42 info trying registry request attempt 1 at 21:20:31
+43 http GET https://registry.npmjs.org/cookieParser
+44 http 404 https://registry.npmjs.org/cookieParser
+45 verbose headers { date: 'Sat, 29 Nov 2014 03:20:31 GMT',
+45 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+45 verbose headers   'content-type': 'application/json',
+45 verbose headers   'cache-control': 'max-age=0',
+45 verbose headers   'content-length': '52',
+45 verbose headers   'accept-ranges': 'bytes',
+45 verbose headers   via: '1.1 varnish',
+45 verbose headers   age: '0',
+45 verbose headers   'x-served-by': 'cache-ord1734-ORD',
+45 verbose headers   'x-cache': 'MISS',
+45 verbose headers   'x-cache-hits': '0',
+45 verbose headers   'x-timer': 'S1417231231.729699,VS0,VE138',
+45 verbose headers   'keep-alive': 'timeout=10, max=50',
+45 verbose headers   connection: 'Keep-Alive' }
+46 silly registry.get cb [ 404,
+46 silly registry.get   { date: 'Sat, 29 Nov 2014 03:20:31 GMT',
+46 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+46 silly registry.get     'content-type': 'application/json',
+46 silly registry.get     'cache-control': 'max-age=0',
+46 silly registry.get     'content-length': '52',
+46 silly registry.get     'accept-ranges': 'bytes',
+46 silly registry.get     via: '1.1 varnish',
+46 silly registry.get     age: '0',
+46 silly registry.get     'x-served-by': 'cache-ord1734-ORD',
+46 silly registry.get     'x-cache': 'MISS',
+46 silly registry.get     'x-cache-hits': '0',
+46 silly registry.get     'x-timer': 'S1417231231.729699,VS0,VE138',
+46 silly registry.get     'keep-alive': 'timeout=10, max=50',
+46 silly registry.get     connection: 'Keep-Alive' } ]
+47 silly lockFile 00ff8f6d-cookieParser-1-3-3 cookieParser@~1.3.3
+48 silly lockFile 00ff8f6d-cookieParser-1-3-3 cookieParser@~1.3.3
+49 error 404 404 Not Found: cookieParser
+49 error 404
+49 error 404 'cookieParser' is not in the npm registry.
+49 error 404 You should bug the author to publish it
+49 error 404 It was specified as a dependency of 'OnlineCoffeeShop'
+49 error 404
+49 error 404 Note that you can also install from a
+49 error 404 tarball, folder, or http url, or git url.
+50 error System Darwin 12.5.0
+51 error command "node" "/usr/local/bin/npm" "install"
+52 error cwd /Users/hyunahkelly/Documents/NodeJS/OnlineCoffeeShop
+53 error node -v v0.10.32
+54 error npm -v 1.4.28
+55 error code E404
+56 verbose exit [ 1, true ]

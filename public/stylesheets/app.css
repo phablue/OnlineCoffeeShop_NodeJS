@@ -194,3 +194,10 @@ hr { border-top: 1px solid #796868; }
 }
 .form-horizontal .control-label { text-align: left; }
 .address { margin-bottom: 7px;}
+
+/* LOGIN Pages */
+.bg-danger {
+  color: #A80000;
+  font-size: 15px;
+  padding: 10px;
+}
