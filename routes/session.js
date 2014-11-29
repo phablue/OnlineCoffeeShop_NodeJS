@@ -16,8 +16,8 @@ exports.create = function (req, res) {
 };
 
 exports.delete = function (req, res) {
-  req.session.userEmail = null;
-  req.session.userName = null;
+  req.session.userEmail = "";
+  req.session.userName = "";
   res.redirect("/");
 };
 

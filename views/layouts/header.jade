@@ -11,12 +11,18 @@
           a(href="#coffee") COFFEE
       ul.nav.navbar-nav.navbar-right
         li
-          form.account(method="post")
-            input(type="email" placeholder="EMAIL")
-            input(type="password" placeholder="Password")
-            button.btn(type="submit") Sign in
-          p.new-accout New customer?
-            a(href="/users/new") Start Here
+          if session.userEmail == ""
+            form.account(action="/login", method="post")
+              input(type="email", name="email", placeholder="EMAIL")
+              input(type="password", name="password" placeholder="Password")
+              button.btn(type="submit") Sign In
+            p.new-accout New customer?
+              a(href="/users/new") Start Here
+          else
+            .logout
+              p Hi, #{session.userName} !
+              a(href="/logout")
+                button.btn Sign Out
         li
           a(href="/cart")
             span.glyphicon.glyphicon-shopping-cart
