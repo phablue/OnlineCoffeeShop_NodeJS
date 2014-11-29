@@ -3,9 +3,11 @@ var crypto = require("crypto");
 var _ = require("underscore");
 var $ = require("jquery-deferred");
 
+var messages = "";
+
 exports.new = function(req, res){
   var emptyData = [{ EMail: "", LastName: "", FirstName: "", Address: "", City: "", ZipCode: ""}]
-  res.render("users/new", {user: emptyData});
+  res.render("users/new", {user: emptyData, messages: messages});
 };
 
 exports.create = function(req, res){
@@ -13,9 +15,11 @@ exports.create = function(req, res){
   existingUsers(def)
   def.done(function (users) {
     if (_.contains(users, req.body.email)) {
+      messages = "Sorry, This Email Already Exist."
       res.redirect("/users/new");
     }
     else {
+      messages = "";
       sqlClient.query("insert into users set ?",
         { EMail: req.body.email,
           PassWord: encrypt(req.body.password),
