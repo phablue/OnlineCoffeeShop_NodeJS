@@ -1,4 +1,4 @@
-var crypto = require("crypto");
+var crypto = require("../helper/crypto");
 var sqlClient = require("mysql").createConnection({user: "root", password: "root", database: "CoffeeShop"});
 
 var messages = "";
@@ -39,11 +39,5 @@ var authenticate = function (req, res, result) {
 };
 
 var wrongPassword = function (password, input) {
-  return password != encrypt(input);
-};
-
-var encrypt = function (password) {
-  var shasum = crypto.createHash("sha1")
-  shasum.update(password);
-  return shasum.digest("base64");
+  return password != crypto.encrypt(input);
 };
