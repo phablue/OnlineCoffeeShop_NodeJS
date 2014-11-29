@@ -11,7 +11,7 @@
           a(href="#coffee") COFFEE
       ul.nav.navbar-nav.navbar-right
         li
-          if session.userEmail == ""
+          if session.userEmail == null
             form.account(action="/login", method="post")
               input(type="email", name="email", placeholder="EMAIL")
               input(type="password", name="password" placeholder="Password")
