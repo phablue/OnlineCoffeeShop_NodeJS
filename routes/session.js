@@ -22,12 +22,12 @@ exports.delete = function (req, res) {
 };
 
 var authenticate = function (req, res, result) {
-  if (result == null) {
-    messages = "Sorry, This Email Does Not Exist. Please Try Again.";
+  if (result.length == 0) {
+    messages = errorMessages();
     res.redirect("/login");
-  } 
+  }
   else if (wrongPassword(result[0].PassWord, req.body.password)) {
-    messages = "Sorry, This Password Is Not Correct. Please Try Again.";
+    messages = errorMessages();
     res.redirect("/login");
   }
   else {
@@ -36,6 +36,14 @@ var authenticate = function (req, res, result) {
     req.session.userName = result[0].FirstName;
     res.redirect("/");
   }
+};
+
+// var invalidAuth = function (req,) {
+//   // body...
+// }
+
+var errorMessages = function () {
+  return "There was an error with your E-Mail/Password combination. Please try again"
 };
 
 var wrongPassword = function (password, input) {
