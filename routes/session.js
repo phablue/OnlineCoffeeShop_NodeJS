@@ -38,10 +38,6 @@ var authenticate = function (req, res, result) {
   }
 };
 
-// var invalidAuth = function (req,) {
-//   // body...
-// }
-
 var errorMessages = function () {
   return "There was an error with your E-Mail/Password combination. Please try again"
 };
