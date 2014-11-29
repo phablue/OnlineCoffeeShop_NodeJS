@@ -28,7 +28,7 @@ var authenticate = function (req, res, result) {
   } 
   else if (wrongPassword(result[0].PassWord, req.body.password)) {
     messages = "Sorry, This Password Is Not Correct. Please Try Again.";
-    res.redirect("/login");      
+    res.redirect("/login");
   }
   else {
     messages = "";
