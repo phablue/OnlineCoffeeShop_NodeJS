@@ -8,7 +8,7 @@ exports.new = function (req, res) {
 };
 
 exports.create = function (req, res) {
-  sqlClient.query("select PassWord, FirstName from users where EMail = ?", [req.body.email],
+  sqlClient.query("select P_ID, PassWord, FirstName from users where EMail = ?", [req.body.email],
   function (err, result) {
     if (err) throw err;
     authenticate(req, res, result);
@@ -18,6 +18,7 @@ exports.create = function (req, res) {
 exports.delete = function (req, res) {
   req.session.userEmail = null;
   req.session.userName = null;
+  req.session.userID = null;
   res.redirect("/");
 };
 
@@ -34,6 +35,7 @@ var authenticate = function (req, res, result) {
     messages = "";
     req.session.userEmail = req.body.email;
     req.session.userName = result[0].FirstName;
+    req.session.userID = result[0].P_ID;
     res.redirect("/");
   }
 };

@@ -12,17 +12,24 @@
       ul.nav.navbar-nav.navbar-right
         li
           if session.userEmail == null
-            form.account(action="/login", method="post")
-              input(type="email", name="email", placeholder="EMAIL")
-              input(type="password", name="password" placeholder="Password")
+            form.account(action="/login" method="post")
+              input(type="email" name="email" placeholder="EMAIL")
+              input(type="password" name="password" placeholder="Password")
               button.btn(type="submit") Sign In
             p.new-accout New customer?
               a(href="/users/new") Start Here
           else
-            .logout
-              p Hi, #{session.userName} !
-              a(href="/logout")
-                button.btn Sign Out
+            .logout.dropdown
+              a.dropdown.dropdown-toggle(href="#" data-toggle="dropdown") Hi, #{session.userName} !
+                span.caret
+              ul.dropdown-menu(role="menu")
+                li
+                  a(href="/users/#{session.userID}/edit") Edit Profile
+                li
+                  a(href="/users/#{session.userID}/delete") Delete Account
+                li.divider
+                li
+                  a(href="/logout") Sign Out
         li
           a(href="/cart")
             span.glyphicon.glyphicon-shopping-cart

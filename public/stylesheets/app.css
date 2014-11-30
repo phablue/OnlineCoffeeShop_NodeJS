@@ -10,6 +10,7 @@ h4 span {
   font-size: 18px;
   padding: 10px;
 }
+
 /* Header */
 .navbar-default {
   background-color: #A80000;
@@ -61,7 +62,7 @@ h4 span {
   margin-right: 10px;
   padding: 3px 6px;
 }
-.account .btn, .logout .btn {
+.account .btn {
   background-color: #630000;
   color: #ECECEC;
   font-size: 12px;
@@ -71,14 +72,21 @@ h4 span {
 }
 .logout {
   display: inline-block;
+  margin-right: 20px;
   position: relative;
-  top: 34px;
+  top: 40px;
 }
-.logout p {
-  color: #ECECEC;
-  float: left;
+.navbar-default .navbar-right li .dropdown-toggle {
   font-size: 16px;
-  padding: 6px;
+  padding: 0;
+  text-decoration: none;
+}
+.caret { margin-left: 15px; }
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus { background-color: #A80000;}
+.navbar-default .navbar-nav li .dropdown-menu a {
+  color: #2C1B13;
+  font-weight: 700;
+  padding: 10px 15px;
 }
 .glyphicon { font-size: 17px; }
 
